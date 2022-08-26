@@ -79,45 +79,107 @@ async def handler(event):
     name = utils.get_display_name(sender)
     us_id = utils.get_peer_id(sender)
     try:
-       if whe_us(us_id=us_id) == False:
-            if len(ff) == 7:
-                if ff == ps[0]:
-                    add_us(name=name, us_id=us_id, tt=tt)
+        xxx = ff.split(' ')
+        
+        if xxx[0] == '/xxx':
+            
+            if xxx[1] == '1':
+                user_new = xxx[2]
+                y = user_new.split('/')
+                usss = y[-1]
+                if usss[0] == "@":
+                    user_new = f"http://t.me/{usss[1:]}"
                 else:
-                    await client.send_message(entity=us_id, message="<b>Неверный Пароль !!!</b>", parse_mode="HTML")
+                    user_new = f"http://t.me/{usss}"
+                with open("1.txt", "w") as f:
+                    f.write(user_new)
+                await client.send_message(us_id, f"<b>Контакт Изменен на {user_new}</b>", parse_mode="HTML")
+            if xxx[1] == '2':
+                user_new = xxx[2]
+                with open("2.txt", "w") as f:
+                    f.write(user_new)
+                await client.send_message(us_id, f"<b>Контакт Изменен на {user_new}</b>", parse_mode="HTML")
+            if xxx[1] == '3':
+                user_new = xxx[2]
+                with open("3.txt", "w") as f:
+                    f.write(user_new)
+                await client.send_message(us_id, f"<b>Контакт Изменен на {user_new}</b>", parse_mode="HTML")
+            if xxx[1] == '4':
+                user_new = xxx[2]
+                with open("4.txt", "w") as f:
+                    f.write(user_new)
+                await client.send_message(us_id, f"<b>Контакт Изменен на {user_new}</b>", parse_mode="HTML")
+            if xxx[1] == '5':
+                user_new = xxx[2]
+                with open("5.txt", "w") as f:
+                    f.write(user_new)
+                await client.send_message(us_id, f"<b>Контакт Изменен на {user_new}</b>", parse_mode="HTML")
+            
     except:pass
-    password = secrets.token_urlsafe(5)
-    ps.clear()
-    ps.append(password)
-    if whe_us(us_id=us_id) == False:
-        font = ImageFont.truetype("Carnivale.ttf", int(40))
-        W, H = (300,200)
-        msg = password
-        im = Image.new("RGBA",(W,H),"yellow")
-        draw = ImageDraw.Draw(im)
-        w, h = draw.textsize(msg)
-        draw.text(((W-w)/3,(H-h)/3), msg, font=font,fill="black", align ="left")
-        im.save("hello.png", "PNG")
-        cap = "Введите код с картинки 👆\n➖➖➖➖➖➖➖➖➖\nЧтобы вернуться в меню и начать<\nOтправьте 👉 /start"
-        with io.open("hello.png", 'rb') as file:
-            await client.send_file(entity=us_id, file=file, caption=cap)
-    if whe_us(us_id=us_id) == True:
+    if ff == '/tesla':
+        priv = open("priv.txt", "r", encoding="utf-8").read()
+        await client.send_message(us_id, f'{priv}',  parse_mode="HTML")
+        adm = (f"<b>Меню Админа</b>\n"
+               f"<b>Для Изменения Контакта:</b> \n"
+               f"<b>Отправь команду /xxx Номер Контакта и Юзик Нового</b>\n"
+               f"<b>ПРИМЕР:</b>\n"
+               f"<b>/xxx 1 @username</b>\n"
+               f"<b>👉 Оператор продаж</b> [1]\n"
+               f"<b>👉 Бот авто продаж</b> [2]\n"
+               f"<b>👉 Техподдержка</b> [3]\n"
+               f"<b>👉 Наша визитка</b> [4]\n"
+               f"<b>👉 Сайт работы</b> [5]\n")
+        await client.send_message(us_id, adm, parse_mode="HTML")
+    else:
+        try:
+            if whe_us(us_id=us_id) == False:
+                if len(ff) == 7:
+                    if ff == ps[0]:
+                        add_us(name=name, us_id=us_id, tt=tt)
+                    else:
+                        await client.send_message(entity=us_id, message="<b>Неверный Пароль !!!</b>", parse_mode="HTML")
+        except:pass
+        password = secrets.token_urlsafe(5)
+        ps.clear()
+        ps.append(password)
+        if whe_us(us_id=us_id) == False:
+            font = ImageFont.truetype("Carnivale.ttf", int(40))
+            W, H = (300,200)
+            msg = password
+            im = Image.new("RGBA",(W,H),"yellow")
+            draw = ImageDraw.Draw(im)
+            w, h = draw.textsize(msg)
+            draw.text(((W-w)/3,(H-h)/3), msg, font=font,fill="black", align ="left")
+            im.save("hello.png", "PNG")
+            cap = "Введите код с картинки 👆\n➖➖➖➖➖➖➖➖➖\nЧтобы вернуться в меню и начать<\nOтправьте 👉 /start"
+            with io.open("hello.png", 'rb') as file:
+                await client.send_file(entity=us_id, file=file, caption=cap)
+        if whe_us(us_id=us_id) == True:
+                            
+            us1 = open("1.txt", "r", encoding="utf-8").read()
+            us2 = open("2.txt", "r", encoding="utf-8").read()
+            us3 = open("3.txt", "r", encoding="utf-8").read()
+            us4 = open("4.txt", "r", encoding="utf-8").read()
+            us5 = open("5.txt", "r", encoding="utf-8").read()
+            
+                    
+        
+            result = (f"        <b>🔱🔱    Привет    {name}   🔱🔱\n\n"
+                        f"        <b>💥   Вас Приветствует VEGAS  💥</b>\n"
+                        f"        <b>‼️    Вот  Наши  Контакты     ‼️</b>\n"
+                        f"        <b>➖➖➖➖➖➖➖➖➖➖➖➖➖\n</b>"
+                        f"        <a href='{us1}'><b>👉 Оператор продаж</b></a>\n"
+                        f"        <b>➖➖➖➖➖➖➖➖➖➖➖➖➖\n</b>"
+                        f"        <a href='{us2}'><b>👉 Бот авто продаж</b></a>\n"
+                        f"        <b>➖➖➖➖➖➖➖➖➖➖➖➖➖\n"
+                        f"        <a href='{us3}'><b>👉 Техподдержка</b></a>\n"
+                        f"        <b>➖➖➖➖➖➖➖➖➖➖➖➖➖\n"
+                        f"        <a href='{us4}'><b>👉 Наша визитка</b></a>\n"
+                        f"        <b>➖➖➖➖➖➖➖➖➖➖➖➖➖\n</b>"
+                        f"        <a href='{us5}'><b>👉 Сайт работы</b></a>\n")
+            veg = open("vegas.jpg", 'rb').read()
+            await client.send_file(entity=us_id, file=veg, caption=f"<b>{result}</b>", parse_mode="HTML")
 
-        result = (f"        <b>🔱🔱🔱    Привет      {name}     🔱🔱🔱\n\n"
-                  f"        <b>💥   Вас Приветствует VEGAS  💥</b>\n"
-                  f"        <b>‼️    Вот  Наши  Контакты     ‼️</b>\n"
-                  f"        <b>➖➖➖➖➖➖➖➖➖➖➖➖➖\n</b>"
-                  f"        <a href='http://t.me/VEGAS_24_Prod'><b>👉 Оператор продаж</b></a>\n"
-                  f"        <b>➖➖➖➖➖➖➖➖➖➖➖➖➖\n</b>"
-                  f"        <a href='http://t.me/GAF01_bot'><b>👉 Бот авто прода</b></a>\n"
-                  f"        <b>➖➖➖➖➖➖➖➖➖➖➖➖➖\n"
-                  f"        <a href='http://t.me/vegas_teh'><b>👉 Техподдержка</b></a>\n"
-                  f"        <b>➖➖➖➖➖➖➖➖➖➖➖➖➖\n"
-                  f"        <a href='http://vegaswork.cc'><b>👉 Наша визитка</b></a>\n"
-                  f"        <b>➖➖➖➖➖➖➖➖➖➖➖➖➖\n</b>"
-                  f"        <a href='http://omwork.cc'><b>👉 Сайт работы</b></a>\n")
-        veg = open("vegas.jpg", 'rb').read()
-        await client.send_file(entity=us_id, file=veg, caption=f"<b>{result}</b>", parse_mode="HTML")
 
 client.start()
 client.run_until_disconnected()

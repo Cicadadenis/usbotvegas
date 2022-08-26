@@ -1,0 +1,1 @@
+worker: python den.py
