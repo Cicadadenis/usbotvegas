@@ -117,8 +117,6 @@ async def handler(event):
             
     except:pass
     if ff == '/tesla':
-        priv = open("priv.txt", "r", encoding="utf-8").read()
-        await client.send_message(us_id, f'{priv}',  parse_mode="HTML")
         adm = (f"<b>Меню Админа</b>\n"
                f"<b>Для Изменения Контакта:</b> \n"
                f"<b>Отправь команду /xxx Номер Контакта и Юзик Нового</b>\n"
